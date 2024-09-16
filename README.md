@@ -4,7 +4,7 @@ At the moment functionality in the [binding.odin](./binding.odin) is enough to r
 
 ## Quick start
 
-1. Pull [Llama.cpp](https://github.com/ggerganov/llama.cpp) and checkout to the **b3735** tag:
+1. Clone [Llama.cpp](https://github.com/ggerganov/llama.cpp) and checkout to the **b3735** tag:
 
 ```bash
 git clone https://github.com/ggerganov/llama.cpp
