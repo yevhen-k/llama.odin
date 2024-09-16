@@ -1,0 +1,32 @@
+diff --git a/Makefile b/Makefile
+index c12bc61f..4e6e64d4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -35,6 +35,9 @@ BUILD_TARGETS = \
+ 	llama-save-load-state \
+ 	llama-server \
+ 	llama-simple \
++	binding.a \
++	binding.o \
++	libbinding.so \
+ 	llama-speculative \
+ 	llama-tokenize \
+ 	llama-vdot \
+@@ -1253,6 +1256,17 @@ llama-simple: examples/simple/simple.cpp \
+ 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
+ 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
+ 
++binding.o: binding.cpp binding.h \
++	$(OBJ_ALL)
++	$(CXX) -c $(CXXFLAGS) $(LDFLAGS) $<
++	# $(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
++
++binding.a: binding.o
++	ar rcs $@ $< $(OBJ_ALL)
++
++libbinding.so: binding.o
++	gcc -shared -o $@ $< $(OBJ_ALL)
++
+ llama-tokenize: examples/tokenize/tokenize.cpp \
+ 	$(OBJ_ALL)
+ 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
