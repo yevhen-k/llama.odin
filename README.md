@@ -46,12 +46,6 @@ This will apply [Makefile.patch](Makefile.patch) to the [llama.cpp/Makefile](./l
 
 Then, [simple project](./examples/simple/) will be compiled and linked with `binding.a`.
 
-## Mini Demo
-
-<video width="800" controls>
-    <source src="./assets/demo.mp4" type="video/mp4">
-</video>
-
 ## Note
 
 1. This is a "thin" wrapper, no custom functionality is added.
